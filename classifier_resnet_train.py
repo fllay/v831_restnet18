@@ -157,6 +157,6 @@ batch_size = 4
 x = torch.randn(batch_size, input_shape[0], input_shape[1], input_shape[2], requires_grad=False)
 x = x.to(device)
 
-torch.onnx._export(net, x, "out/classifier.onnx", export_params=True)
+torch.onnx._export(net, x, "/content/v831_restnet18/out/classifier.onnx", export_params=True)
 
 
