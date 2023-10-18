@@ -14,8 +14,8 @@ import torch.optim as optim
 
 ######## config #############
 # classes = ["mouse","sipeed_logo"]       #训练标签
-classes = os.listdir('/content/v831_restnet18/data')
-dataset_path = "data"
+dataset_path = "/content/v831_restnet18/data"
+classes = os.listdir(dataset_path)
 val_split_from_data = 0.1 # 10%
 batch_size = 4
 learn_rate = 0.001
@@ -25,7 +25,7 @@ save_every_epoch = 20
 dataload_num_workers = 2
 input_shape = (3, 224, 224)
 cards_id = [5]                                    #显卡的使用ID号
-param_save_path = './out/classifier_{}.pth'
+param_save_path = '/content/v831_restnet18/out/classifier_{}.pth'
 
 
 
