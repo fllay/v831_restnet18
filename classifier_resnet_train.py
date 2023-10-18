@@ -10,15 +10,16 @@ import os
 import random
 from torchsummary import summary
 import torch.optim as optim
-from classes_label import labels as classes
+#from classes_label import labels as classes
 
 ######## config #############
 # classes = ["mouse","sipeed_logo"]       #训练标签
+classes = os.listdir('/content/v831_restnet18/data')
 dataset_path = "data"
 val_split_from_data = 0.1 # 10%
 batch_size = 4
 learn_rate = 0.001
-total_epoch = 400
+total_epoch = 100
 eval_every_epoch = 5
 save_every_epoch = 20
 dataload_num_workers = 2
