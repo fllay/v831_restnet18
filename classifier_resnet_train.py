@@ -27,11 +27,6 @@ input_shape = (3, 224, 224)
 cards_id = [5]                                    #显卡的使用ID号
 param_save_path = '/content/v831_restnet18/out/classifier_{}.pth'
 
-
-
-os.environ['CUDA_VISIBLE_DEVICES'] = ",".join(f"{id}" for id in cards_id)
-
-
 def load_data(path, class_id, shape):
     data = []
     exts = [".jpg", ".jpeg", ".png"]
@@ -63,7 +58,15 @@ class Dataset:
 if not os.path.exists("out"):
     os.makedirs("out")
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device_s = ""
+if torch.cuda.is_available():
+    device_s = "cuda:0"
+else:
+    device_s = "cpu"
+device = torch.device(device_s)
+# device = torch.device("cuda:0" if
+
+#device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 
 trainset = []
