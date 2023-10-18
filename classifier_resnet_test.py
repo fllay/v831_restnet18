@@ -5,17 +5,20 @@ import numpy as np
 import cv2
 import os, sys
 from torchsummary import summary
-from classes_label import labels as classes
+#from classes_label import labels as classes
 
 ######## config #############
 test_images_path = sys.argv[1]
 # classes = ("mouse","sipeed_logo")
+dataset_path = "/content/v831_restnet18/data"
+classes = os.listdir(dataset_path)
+print(classes)
 input_shape = (3, 224, 224)
 cards_id = [0]                               #显卡的使用ID号
-param_save_path = sys.argv[2]
-onnx_out_name = "out/classifier.onnx"
-ncnn_out_param = "out/classifier.param"
-ncnn_out_bin = "out/classifier.bin"
+param_save_path = "/content/v831_restnet18/out/classifier_final.pth"
+onnx_out_name = "/content/v831_restnet18/out/classifier.onnx"
+ncnn_out_param = "/content/v831_restnet18/out/classifier.param"
+ncnn_out_bin = "/content/v831_restnet18/out/classifier.bin"
 
 os.environ['CUDA_VISIBLE_DEVICES'] = ",".join(f"{id}" for id in cards_id)
 
