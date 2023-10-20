@@ -55,8 +55,8 @@ class Dataset:
     def __len__(self) -> int:
         return len(self.data)
 
-if not os.path.exists("out"):
-    os.makedirs("out")
+if not os.path.exists("/content/v831_restnet18/out"):
+    os.makedirs("/content/v831_restnet18/out")
 
 device_s = ""
 if torch.cuda.is_available():
