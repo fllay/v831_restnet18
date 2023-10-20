@@ -167,7 +167,7 @@ torch.onnx._export(net, x, "/content/v831_restnet18/out/classifier.onnx", export
 #from classes_label import labels as classes
 
 ######## config #############
-test_images_path = '/content/v831_restnet18/test' 
+test_images_path = '/content/v831_restnet18/images' 
 # classes = ("mouse","sipeed_logo")
 dataset_path = "/content/v831_restnet18/data"
 classes = os.listdir(dataset_path)
