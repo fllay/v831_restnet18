@@ -259,16 +259,24 @@ with torch.no_grad():
     onnx_to_ncnn(input_shape, onnx=onnx_out_name, ncnn_param=ncnn_out_param, ncnn_bin=ncnn_out_bin)
 
 
-cmd0 = ['rm', '-rf', '/images']
-cmd1 = ['rm', '/classifier.bin']
-cmd2 = ['rm', '/classifier.param']
+try:
+  folder_path = '/images'
+  shutil.rmtree(folder_path)
+  print('Out Folder and its content removed')
+except:
+  print('Folder not deleted')
+if not os.path.exists("//images"):
+    os.makedirs("/images")
+    
+#cmd1 = ['rm', '/classifier.bin']
+#cmd2 = ['rm', '/classifier.param']
 cmd3 = ['cp','/content/v831_restnet18/out/classifier.bin','/']
 cmd4 = ['cp','/content/v831_restnet18/out/classifier.param','/']
 cmd5 = ['cp','-rf','/content/v831_restnet18/images','/']
 cmd6 = ['zip', '-r', '/classifier.zip', '/images', '/classifier.bin', '/classifier.param']
-proc0 = check_output(cmd0)
-proc1 = check_output(cmd1)
-proc2 = check_output(cmd2)
+#proc0 = check_output(cmd0)
+#proc1 = check_output(cmd1)
+#proc2 = check_output(cmd2)
 proc3 = check_output(cmd3)
 proc4 = check_output(cmd4)
 proc5 = check_output(cmd5)
