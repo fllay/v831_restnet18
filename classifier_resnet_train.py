@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import models
+from subprocess import Popen, TimeoutExpired, PIPE, check_call, check_output
 # import resnet as models
 import numpy as np
 import cv2
@@ -256,3 +257,19 @@ if not os.path.exists("out"):
 with torch.no_grad():
     torch_to_onnx(net.to("cpu"), input_shape, out_name=onnx_out_name, device="cpu")
     onnx_to_ncnn(input_shape, onnx=onnx_out_name, ncnn_param=ncnn_out_param, ncnn_bin=ncnn_out_bin)
+
+
+cmd0 = ['rm', '-rf', '/images']
+cmd1 = ['rm', '/classifier.bin']
+cmd2 = ['rm', '/classifier.param']
+cmd3 = ['cp','/content/v831_restnet18/out/classifier.bin','/']
+cmd4 = ['cp','/content/v831_restnet18/out/classifier.param','/']
+cmd5 = ['cp','-rf','/content/v831_restnet18/images','/']
+cmd6 = ['zip', '-r', '/classifier.zip', '/images', '/classifier.bin', '/classifier.param']
+proc0 = check_output(cmd0)
+proc1 = check_output(cmd1)
+proc2 = check_output(cmd2)
+proc3 = check_output(cmd3)
+proc4 = check_output(cmd4)
+proc5 = check_output(cmd5)
+proc6 = check_output(cmd6)
