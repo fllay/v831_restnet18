@@ -265,7 +265,7 @@ try:
   print('Out Folder and its content removed')
 except:
   print('Folder not deleted')
-if not os.path.exists("//images"):
+if not os.path.exists("/images"):
     os.makedirs("/images")
     
 #cmd1 = ['rm', '/classifier.bin']
