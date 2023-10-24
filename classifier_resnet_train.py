@@ -17,6 +17,8 @@ import torch.optim as optim
 # classes = ["mouse","sipeed_logo"]       #训练标签
 dataset_path = "/content/v831_restnet18/data"
 classes = os.listdir(dataset_path)
+with open('/label.txt', mode='wt', encoding='utf-8') as myfile:
+    myfile.write('\n'.join(classes))
 val_split_from_data = 0.1 # 10%
 batch_size = 4
 learn_rate = 0.001
